@@ -1,0 +1,77 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    11/30/2018  14:54:18  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+D:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\main.obj, .\Objects\timers.obj TO .\Objects\Task_1 PRINT (.\Listings\Task_1.m51) R
+>> AMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  .\Objects\timers.obj (TIMERS)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\Objects\Task_1 (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     000CH     UNIT         ?C_C51STARTUP
+            CODE    000FH     0002H     UNIT         ?PR?MAIN?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\Task_1 (MAIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Task_1 (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00E8H         PUBLIC        I2CCON
+  D:00E8H         PUBLIC        DCON
+  C:000FH         PUBLIC        main
+  -------         PROC          MAIN
+  C:000FH         LINE#         14
+  C:000FH         LINE#         15
+  C:000FH         LINE#         16
+  C:000FH         LINE#         17
+  C:000FH         LINE#         19
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/30/2018  14:54:18  PAGE 2
+
+
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        TIMERS
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  -------         ENDMOD        TIMERS
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0002H BYTE ( 0%) *
+******************************************************************************
+
+Program Size: data=9.0 xdata=0 code=17
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

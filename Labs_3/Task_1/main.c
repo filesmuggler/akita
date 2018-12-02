@@ -1,7 +1,7 @@
 /**
  * @author Krzysztof Stezala
- * @date 2018-11-30
- * @version 1.0
+ * @date 2018-12-02
+ * @version 2.0
  * @brief Timer 0 task
  */
  
@@ -13,7 +13,7 @@
  */
 int g_1 = 15;
 int g_2 = 20;
-int num_impulses = 15;
+char num_impulses = 15;
 char th0_initial_value;
 char tl0_initial_value;
 
@@ -27,6 +27,10 @@ void timer_0_function(void) interrupt 1
 	 * Change of global variable to opposite.
    */
 	g_2 = g_2 * (-1);
+	th0_initial_value = 0xFF;
+	tl0_initial_value = 0xFF - num_impulses + 1;	
+	TH0 = th0_initial_value;
+	TL0 = tl0_initial_value;	
 }
  
 /**
@@ -34,26 +38,6 @@ void timer_0_function(void) interrupt 1
  */
 void main(void)
 {
-		/**
-		 * Setting the upper (TH0) and lower (TL0) register 
-		 * values to make overflow after given number of impulses.
-		 */
-		th0_initial_value = 0xFF;
-		tl0_initial_value = 0xFF - num_impulses;
-	
-		TH0 = th0_initial_value;
-		TL0 = tl0_initial_value;
-	
-		/**
-		 * Setting the proper mode for TMOD register 
-		 */
-		TMOD = T0_MODE_16B | T0_MODE_OPERATIONAL_COUNTER;
-	
-		/**
-		 * Setting the proper TCON register value.
-		 */
-		TR0 = 1;
-		
 		/**
 		 * Enabling all interrupts.
 		 */
@@ -67,8 +51,29 @@ void main(void)
 		/**
 		 * Setting interrupt's priority.
 		 */
-		 PT0 = 1;
-		 
+		//PT0 = 1;
+	
+		/**
+		 * Setting the proper mode for TMOD register 
+		 */
+		TMOD = T0_MODE_16B | T0_MODE_OPERATIONAL_COUNTER;
+	
+		/**
+		 * Setting the upper (TH0) and lower (TL0) register 
+		 * values to make overflow after given number of impulses.
+		 */
+		th0_initial_value = 0xFF;
+		tl0_initial_value = 0xFF - 15 + 1;
+		
+		
+		TH0 = th0_initial_value;
+		TL0 = tl0_initial_value;
+		
+		/**
+		 * Setting the proper TCON register value.
+		 */
+		TR0 = 1;
+		
 		/**
 		 * Main loop
 		 */
@@ -86,6 +91,8 @@ void main(void)
 			{
 				g_1 = g_1 * (-1);
 				TF0 = 0;
+				th0_initial_value = 0xFF;
+				tl0_initial_value = 0xFF - num_impulses + 1;	
 				TH0 = th0_initial_value;
 				TL0 = tl0_initial_value;
 			}

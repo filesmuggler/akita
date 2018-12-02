@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    12/01/2018  21:11:21  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    12/02/2018  17:39:40  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
@@ -25,8 +25,8 @@ LINK MAP OF MODULE:  .\Objects\Task_1 (MAIN)
 
             * * * * * * *   D A T A   M E M O R Y   * * * * * * *
             REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
-            DATA    0008H     0008H     UNIT         ?DT?MAIN
-            IDATA   0010H     0001H     UNIT         ?STACK
+            DATA    0008H     0007H     UNIT         ?DT?MAIN
+            IDATA   000FH     0001H     UNIT         ?STACK
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
@@ -34,10 +34,10 @@ LINK MAP OF MODULE:  .\Objects\Task_1 (MAIN)
             CODE    000BH     0003H     ABSOLUTE     
                     000EH     07F2H                  *** GAP ***
             CODE    0800H     008CH     UNIT         ?C_C51STARTUP
-            CODE    088CH     0037H     UNIT         ?PR?MAIN?MAIN
-            CODE    08C3H     0033H     UNIT         ?PR?TIMER_0_FUNCTION?MAIN
-            CODE    08F6H     0012H     UNIT         ?C?LIB_CODE
-            CODE    0908H     000DH     UNIT         ?C_INITSEG
+            CODE    088CH     0042H     UNIT         ?PR?TIMER_0_FUNCTION?MAIN
+            CODE    08CEH     003AH     UNIT         ?PR?MAIN?MAIN
+            CODE    0908H     0012H     UNIT         ?C?LIB_CODE
+            CODE    091AH     000CH     UNIT         ?C_INITSEG
 
 
 
@@ -59,54 +59,58 @@ SYMBOL TABLE OF MODULE:  .\Objects\Task_1 (MAIN)
   ----------------------------------
 
   -------         MODULE        MAIN
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/01/2018  21:11:21  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/02/2018  17:39:40  PAGE 2
 
 
   C:0000H         SYMBOL        _ICE_DUMMY_
-  C:08C3H         PUBLIC        timer_0_function
+  C:088CH         PUBLIC        timer_0_function
   B:00A8H.7       PUBLIC        EA
   D:00E8H         PUBLIC        I2CCON
   D:00E8H         PUBLIC        DCON
-  C:088CH         PUBLIC        main
+  C:08CEH         PUBLIC        main
   D:0008H         PUBLIC        num_impulses
   D:0089H         PUBLIC        TMOD
   B:00A8H.1       PUBLIC        ET0
   B:0088H.5       PUBLIC        TF0
   D:008CH         PUBLIC        TH0
   D:008AH         PUBLIC        TL0
-  B:00B8H.1       PUBLIC        PT0
   B:0088H.4       PUBLIC        TR0
-  D:000AH         PUBLIC        th0_initial_value
-  D:000BH         PUBLIC        tl0_initial_value
-  D:000CH         PUBLIC        g_1
-  D:000EH         PUBLIC        g_2
+  D:0009H         PUBLIC        th0_initial_value
+  D:000AH         PUBLIC        tl0_initial_value
+  D:000BH         PUBLIC        g_1
+  D:000DH         PUBLIC        g_2
   -------         PROC          TIMER_0_FUNCTION
-  C:08C3H         LINE#         24
-  C:08D6H         LINE#         29
-  C:08E5H         LINE#         30
+  C:088CH         LINE#         24
+  C:089FH         LINE#         29
+  C:08AEH         LINE#         30
+  C:08B1H         LINE#         31
+  C:08B7H         LINE#         32
+  C:08BAH         LINE#         33
+  C:08BDH         LINE#         34
   -------         ENDPROC       TIMER_0_FUNCTION
   -------         PROC          MAIN
-  C:088CH         LINE#         35
-  C:088CH         LINE#         36
-  C:088CH         LINE#         41
-  C:088FH         LINE#         42
-  C:0896H         LINE#         44
-  C:0899H         LINE#         45
-  C:089CH         LINE#         50
-  C:089FH         LINE#         55
-  C:08A1H         LINE#         60
-  C:08A3H         LINE#         65
-  C:08A5H         LINE#         70
-  C:08A7H         LINE#         75
-  C:08A7H         LINE#         76
-  C:08A7H         LINE#         85
-  C:08AAH         LINE#         86
-  C:08AAH         LINE#         87
-  C:08B9H         LINE#         88
-  C:08BBH         LINE#         89
-  C:08BEH         LINE#         90
-  C:08C1H         LINE#         91
-  C:08C1H         LINE#         92
+  C:08CEH         LINE#         39
+  C:08CEH         LINE#         40
+  C:08CEH         LINE#         44
+  C:08D0H         LINE#         49
+  C:08D2H         LINE#         59
+  C:08D5H         LINE#         65
+  C:08D8H         LINE#         66
+  C:08DBH         LINE#         69
+  C:08DEH         LINE#         70
+  C:08E1H         LINE#         75
+  C:08E3H         LINE#         80
+  C:08E3H         LINE#         81
+  C:08E3H         LINE#         90
+  C:08E6H         LINE#         91
+  C:08E6H         LINE#         92
+  C:08F5H         LINE#         93
+  C:08F7H         LINE#         94
+  C:08FAH         LINE#         95
+  C:0900H         LINE#         96
+  C:0903H         LINE#         97
+  C:0906H         LINE#         98
+  C:0906H         LINE#         99
   -------         ENDPROC       MAIN
   -------         ENDMOD        MAIN
 
@@ -115,15 +119,15 @@ SYMBOL TABLE OF MODULE:  .\Objects\Task_1 (MAIN)
   -------         ENDMOD        TIMERS
 
   -------         MODULE        ?C?IMUL
-  C:08F6H         PUBLIC        ?C?IMUL
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/02/2018  17:39:40  PAGE 3
+
+
+  C:0908H         PUBLIC        ?C?IMUL
   -------         ENDMOD        ?C?IMUL
 
 ******************************************************************************
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/01/2018  21:11:21  PAGE 3
-
-
-* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0079H BYTE ( 5%) *
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 008AH BYTE ( 6%) *
 ******************************************************************************
 
-Program Size: data=17.0 xdata=0 code=283
+Program Size: data=16.0 xdata=0 code=300
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

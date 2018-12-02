@@ -1,4 +1,4 @@
-C51 COMPILER V9.59.0.0   MAIN                                                              12/01/2018 21:11:20 PAGE 1   
+C51 COMPILER V9.59.0.0   MAIN                                                              12/02/2018 17:39:39 PAGE 1   
 
 
 C51 COMPILER V9.59.0.0, COMPILATION OF MODULE MAIN
@@ -10,8 +10,8 @@ line level    source
 
    1          /**
    2           * @author Krzysztof Stezala
-   3           * @date 2018-11-30
-   4           * @version 1.0
+   3           * @date 2018-12-02
+   4           * @version 2.0
    5           * @brief Timer 0 task
    6           */
    7           
@@ -23,7 +23,7 @@ line level    source
   13           */
   14          int g_1 = 15;
   15          int g_2 = 20;
-  16          int num_impulses = 15;
+  16          char num_impulses = 15;
   17          char th0_initial_value;
   18          char tl0_initial_value;
   19          
@@ -37,81 +37,88 @@ line level    source
   27   1         * Change of global variable to opposite.
   28   1         */
   29   1        g_2 = g_2 * (-1);
-  30   1      }
-  31           
-  32          /**
-  33           * Main function
-  34           */
-  35          void main(void)
-  36          {
-  37   1          /**
-  38   1           * Setting the upper (TH0) and lower (TL0) register 
-  39   1           * values to make overflow after given number of impulses.
-  40   1           */
-  41   1          th0_initial_value = 0xFF;
-  42   1          tl0_initial_value = 0xFF - num_impulses;
-  43   1        
-  44   1          TH0 = th0_initial_value;
-  45   1          TL0 = tl0_initial_value;
-  46   1        
-  47   1          /**
-  48   1           * Setting the proper mode for TMOD register 
-  49   1           */
-  50   1          TMOD = T0_MODE_16B | T0_MODE_OPERATIONAL_COUNTER;
-  51   1        
-  52   1          /**
-  53   1           * Setting the proper TCON register value.
-  54   1           */
-C51 COMPILER V9.59.0.0   MAIN                                                              12/01/2018 21:11:20 PAGE 2   
+  30   1        th0_initial_value = 0xFF;
+  31   1        tl0_initial_value = 0xFF - num_impulses + 1;  
+  32   1        TH0 = th0_initial_value;
+  33   1        TL0 = tl0_initial_value;  
+  34   1      }
+  35           
+  36          /**
+  37           * Main function
+  38           */
+  39          void main(void)
+  40          {
+  41   1          /**
+  42   1           * Enabling all interrupts.
+  43   1           */
+  44   1          EA = 1;
+  45   1          
+  46   1          /**
+  47   1           * Enabling interrupt at Timer 0.
+  48   1           */
+  49   1          ET0 = 1;
+  50   1          
+  51   1          /**
+  52   1           * Setting interrupt's priority.
+  53   1           */
+  54   1          //PT0 = 1;
+C51 COMPILER V9.59.0.0   MAIN                                                              12/02/2018 17:39:39 PAGE 2   
 
-  55   1          TR0 = 1;
-  56   1          
-  57   1          /**
-  58   1           * Enabling all interrupts.
-  59   1           */
-  60   1          EA = 1;
-  61   1          
-  62   1          /**
-  63   1           * Enabling interrupt at Timer 0.
+  55   1        
+  56   1          /**
+  57   1           * Setting the proper mode for TMOD register 
+  58   1           */
+  59   1          TMOD = T0_MODE_16B | T0_MODE_OPERATIONAL_COUNTER;
+  60   1        
+  61   1          /**
+  62   1           * Setting the upper (TH0) and lower (TL0) register 
+  63   1           * values to make overflow after given number of impulses.
   64   1           */
-  65   1          ET0 = 1;
-  66   1          
-  67   1          /**
-  68   1           * Setting interrupt's priority.
-  69   1           */
-  70   1           PT0 = 1;
-  71   1           
+  65   1          th0_initial_value = 0xFF;
+  66   1          tl0_initial_value = 0xFF - 15 + 1;
+  67   1          
+  68   1          
+  69   1          TH0 = th0_initial_value;
+  70   1          TL0 = tl0_initial_value;
+  71   1          
   72   1          /**
-  73   1           * Main loop
+  73   1           * Setting the proper TCON register value.
   74   1           */
-  75   1          while(1)
-  76   1          {
-  77   2            /**
-  78   2             * If Timer 0 overflow occurs
-  79   2             * the flag TF0 is changed to 1
-  80   2             * which has to be manually cleared
-  81   2             * by the user for making the recurrent
-  82   2             * overflow possible.
-  83   2             * TH0 and TL0 has to be reset to initial values.
-  84   2             */
-  85   2            if(TF0)
-  86   2            {
-  87   3              g_1 = g_1 * (-1);
-  88   3              TF0 = 0;
-  89   3              TH0 = th0_initial_value;
-  90   3              TL0 = tl0_initial_value;
-  91   3            }
-  92   2          }
-  93   1      }
-  94           
+  75   1          TR0 = 1;
+  76   1          
+  77   1          /**
+  78   1           * Main loop
+  79   1           */
+  80   1          while(1)
+  81   1          {
+  82   2            /**
+  83   2             * If Timer 0 overflow occurs
+  84   2             * the flag TF0 is changed to 1
+  85   2             * which has to be manually cleared
+  86   2             * by the user for making the recurrent
+  87   2             * overflow possible.
+  88   2             * TH0 and TL0 has to be reset to initial values.
+  89   2             */
+  90   2            if(TF0)
+  91   2            {
+  92   3              g_1 = g_1 * (-1);
+  93   3              TF0 = 0;
+  94   3              th0_initial_value = 0xFF;
+  95   3              tl0_initial_value = 0xFF - num_impulses + 1;  
+  96   3              TH0 = th0_initial_value;
+  97   3              TL0 = tl0_initial_value;
+  98   3            }
+  99   2          }
+ 100   1      }
+ 101           
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    106    ----
+   CODE SIZE        =    124    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =      8    ----
+   DATA SIZE        =      7    ----
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.

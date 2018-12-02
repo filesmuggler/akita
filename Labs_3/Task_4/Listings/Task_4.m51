@@ -1,0 +1,198 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    12/02/2018  18:28:27  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+D:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\main.obj, .\Objects\timers.obj TO .\Objects\Task_4 PRINT (.\Listings\Task_4.m51) R
+>> AMSIZE (256)
+
+
+MEMORY MODEL: SMALL WITH FLOATING POINT ARITHMETIC
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  .\Objects\timers.obj (TIMERS)
+  D:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPADD)
+  D:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPMUL)
+  D:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPDIV)
+  D:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPCMP)
+  D:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FCAST)
+  D:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?CASTF)
+  D:\KEIL_V5\C51\LIB\C51FPS.LIB (SQRT)
+  D:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPGETOPN)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C?IMUL)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C?LNEG)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C?ULSHR)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\Task_4 (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000EH     UNIT         ?DT?MAIN
+            DATA    0016H     0004H     UNIT         _DATA_GROUP_
+            IDATA   001AH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0018H                  *** GAP ***
+            CODE    001BH     0003H     ABSOLUTE     
+                    001EH     07E2H                  *** GAP ***
+            CODE    0800H     0409H     UNIT         ?C?LIB_CODE
+            CODE    0C09H     00F5H     UNIT         ?PR?MAIN?MAIN
+            CODE    0CFEH     00AAH     UNIT         ?PR?SQRT?SQRT
+            CODE    0DA8H     008CH     UNIT         ?C_C51STARTUP
+            CODE    0E34H     0086H     UNIT         ?PR?TIMER_1_FUNCTION?MAIN
+            CODE    0EBAH     0019H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\Task_4 (MAIN)
+
+
+SEGMENT                             DATA_GROUP 
+  +--> CALLED SEGMENT             START    LENGTH
+-------------------------------------------------
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/02/2018  18:28:27  PAGE 2
+
+
+?C_C51STARTUP                     -----    -----
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN                     -----    -----
+  +--> ?PR?SQRT?SQRT
+
+?PR?SQRT?SQRT                     0016H    0004H
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Task_4 (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0E34H         PUBLIC        timer_1_function
+  D:00B0H         PUBLIC        P3
+  B:00A8H.7       PUBLIC        EA
+  D:0008H         PUBLIC        test_g_1
+  D:000AH         PUBLIC        test_g_2
+  D:00E8H         PUBLIC        I2CCON
+  D:000CH         PUBLIC        result
+  D:00E8H         PUBLIC        DCON
+  C:0C09H         PUBLIC        main
+  D:0089H         PUBLIC        TMOD
+  B:00A8H.3       PUBLIC        ET1
+  B:0088H.7       PUBLIC        TF1
+  D:008DH         PUBLIC        TH1
+  D:008BH         PUBLIC        TL1
+  B:00B8H.3       PUBLIC        PT1
+  B:0088H.6       PUBLIC        TR1
+  D:0010H         PUBLIC        k
+  D:0014H         PUBLIC        time_ms
+  -------         PROC          TIMER_1_FUNCTION
+  C:0E34H         LINE#         27
+  C:0E51H         LINE#         32
+  C:0E54H         LINE#         33
+  C:0E63H         LINE#         34
+  C:0E9FH         LINE#         36
+  -------         ENDPROC       TIMER_1_FUNCTION
+  -------         PROC          MAIN
+  C:0C09H         LINE#         41
+  C:0C09H         LINE#         42
+  C:0C09H         LINE#         46
+  C:0C0BH         LINE#         51
+  C:0C0DH         LINE#         56
+  C:0C0FH         LINE#         61
+  C:0C12H         LINE#         66
+  C:0C4EH         LINE#         71
+  C:0C50H         LINE#         72
+  C:0C53H         LINE#         73
+  C:0C56H         LINE#         79
+  C:0C56H         LINE#         80
+  C:0C56H         LINE#         89
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/02/2018  18:28:27  PAGE 3
+
+
+  C:0C59H         LINE#         90
+  C:0C68H         LINE#         91
+  C:0C6AH         LINE#         92
+  C:0CA6H         LINE#         93
+  C:0CA6H         LINE#         94
+  C:0CA9H         LINE#         95
+  C:0CBDH         LINE#         96
+  C:0CBDH         LINE#         97
+  C:0CC8H         LINE#         98
+  C:0CCAH         LINE#         100
+  C:0CCAH         LINE#         101
+  C:0CE5H         LINE#         102
+  C:0CFBH         LINE#         103
+  C:0CFBH         LINE#         104
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        TIMERS
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  -------         ENDMOD        TIMERS
+
+  -------         MODULE        ?C?FPADD
+  C:0807H         PUBLIC        ?C?FPADD
+  C:0803H         PUBLIC        ?C?FPSUB
+  -------         ENDMOD        ?C?FPADD
+
+  -------         MODULE        ?C?FPMUL
+  C:08F8H         PUBLIC        ?C?FPMUL
+  -------         ENDMOD        ?C?FPMUL
+
+  -------         MODULE        ?C?FPDIV
+  C:0A01H         PUBLIC        ?C?FPDIV
+  -------         ENDMOD        ?C?FPDIV
+
+  -------         MODULE        ?C?FPCMP
+  C:0AA0H         PUBLIC        ?C?FPCMP
+  C:0A9EH         PUBLIC        ?C?FPCMP3
+  -------         ENDMOD        ?C?FPCMP
+
+  -------         MODULE        ?C?FCAST
+  C:0B21H         PUBLIC        ?C?FCASTC
+  C:0B1CH         PUBLIC        ?C?FCASTI
+  C:0B17H         PUBLIC        ?C?FCASTL
+  -------         ENDMOD        ?C?FCAST
+
+  -------         MODULE        ?C?CASTF
+  C:0B55H         PUBLIC        ?C?CASTF
+  -------         ENDMOD        ?C?CASTF
+
+  -------         MODULE        SQRT
+  C:0D02H         PUBLIC        _SQRT
+  -------         ENDMOD        SQRT
+
+  -------         MODULE        ?C?IMUL
+  C:0BD6H         PUBLIC        ?C?IMUL
+  -------         ENDMOD        ?C?IMUL
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/02/2018  18:28:27  PAGE 4
+
+
+  -------         MODULE        ?C?LNEG
+  C:0BE8H         PUBLIC        ?C?LNEG
+  -------         ENDMOD        ?C?LNEG
+
+  -------         MODULE        ?C?ULSHR
+  C:0BF6H         PUBLIC        ?C?ULSHR
+  -------         ENDMOD        ?C?ULSHR
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0196H BYTE (19%) *
+******************************************************************************
+
+Program Size: data=27.0 xdata=0 code=1753
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

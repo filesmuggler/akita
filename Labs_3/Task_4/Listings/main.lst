@@ -1,0 +1,134 @@
+C51 COMPILER V9.59.0.0   MAIN                                                              12/02/2018 18:28:27 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          /**
+   2           * @author Krzysztof Stezala
+   3           * @date 2018-12-02
+   4           * @version 1.0
+   5           * @brief Set diode with proper period task
+   6           */
+   7          #include "aduc831.h"
+   8          #include "timers.h"
+   9          #include "bitop.h"
+  10          
+  11          #include <stdio.h>
+  12          #include <math.h>
+  13          
+  14          
+  15          /**
+  16           * Global variables
+  17           */
+  18          int time_ms = 20;
+  19          int test_g_1 = 20;
+  20          int test_g_2 = 30;
+  21          float k = 1;
+  22          float result = 0;
+  23           
+  24          /**
+  25           * Timer 1 interrupt function
+  26           */
+  27          void timer_1_function(void) interrupt 3
+  28          {
+  29   1        /**
+  30   1         * Light up the diode at port P3, pin 6.
+  31   1         */
+  32   1        DiodeTOGGLE(P3,6);  
+  33   1        test_g_1 = test_g_1 * (-1); 
+  34   1        T1_set_time_ms(time_ms);
+  35   1        
+  36   1      }
+  37           
+  38          /**
+  39           * Main function
+  40           */
+  41          void main(void)
+  42          {
+  43   1          /**
+  44   1           * Enabling all interrupts.
+  45   1           */
+  46   1          EA = 1;
+  47   1          
+  48   1          /**
+  49   1           * Enabling interrupt at Timer 1.
+  50   1           */
+  51   1          ET1 = 1;
+  52   1          
+  53   1          /**
+  54   1           * Setting interrupt's priority.
+C51 COMPILER V9.59.0.0   MAIN                                                              12/02/2018 18:28:27 PAGE 2   
+
+  55   1           */
+  56   1          PT1 = 1;
+  57   1        
+  58   1          /**
+  59   1           * Setting the proper mode for TMOD register 
+  60   1           */
+  61   1          TMOD = T1_MODE_16B | T1_MODE_OPERATIONAL_TIMER;
+  62   1          /**
+  63   1           * Setting the upper (TH1) and lower (TL1) register 
+  64   1           * values to make overflow after given number of impulses.
+  65   1           */
+  66   1          T1_set_time_ms(time_ms);
+  67   1        
+  68   1          /**
+  69   1           * Setting the proper TCON register value.
+  70   1           */
+  71   1          TR1 = 1;
+  72   1          DiodeON(P3,6);
+  73   1          DiodeON(P3,7);
+  74   1          
+  75   1           
+  76   1          /**
+  77   1           * Main loop
+  78   1           */
+  79   1          while(1)
+  80   1          {
+  81   2            /**
+  82   2             * If Timer 1 overflow occurs
+  83   2             * the flag TF1 is changed to 1
+  84   2             * which has to be manually cleared
+  85   2             * by the user for making the recurrent
+  86   2             * overflow possible.
+  87   2             * TH1 and TL1 has to be reset to initial values.
+  88   2             */
+  89   2            if(TF1){  
+  90   3              test_g_2 = test_g_2 * (-1); 
+  91   3              TF1 = 0;
+  92   3              T1_set_time_ms(time_ms);
+  93   3            }
+  94   2            DiodeTOGGLE(P3,7);
+  95   2            if(k>=10)
+  96   2            {
+  97   3              k=1;
+  98   3            }
+  99   2            else
+ 100   2            {
+ 101   3              k = k + 0.1;
+ 102   3              result = k*(sqrt(k));
+ 103   3            }
+ 104   2          }
+ 105   1      }
+ 106           
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    379    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     14    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+C51 COMPILER V9.59.0.0   MAIN                                                              12/02/2018 18:28:27 PAGE 3   
+
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,151 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    12/02/2018  17:44:12  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+D:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\main.obj, .\Objects\timers.obj TO .\Objects\Task_3 PRINT (.\Listings\Task_3.m51) R
+>> AMSIZE (256)
+
+
+MEMORY MODEL: SMALL WITH FLOATING POINT ARITHMETIC
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  .\Objects\timers.obj (TIMERS)
+  D:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPDIV)
+  D:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FCAST)
+  D:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?CASTF)
+  D:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPGETOPN)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C?IMUL)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C?LNEG)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C?ULSHR)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\Task_3 (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         ?DT?MAIN
+            IDATA   000BH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0018H                  *** GAP ***
+            CODE    001BH     0003H     ABSOLUTE     
+                    001EH     07E2H                  *** GAP ***
+            CODE    0800H     0192H     UNIT         ?C?LIB_CODE
+            CODE    0992H     008CH     UNIT         ?C_C51STARTUP
+            CODE    0A1EH     008BH     UNIT         ?PR?MAIN?MAIN
+            CODE    0AA9H     0087H     UNIT         ?PR?TIMER_1_FUNCTION?MAIN
+            CODE    0B30H     0008H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\Task_3 (MAIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/02/2018  17:44:12  PAGE 2
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Task_3 (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0AA9H         PUBLIC        timer_1_function
+  D:00B0H         PUBLIC        P3
+  B:00A8H.7       PUBLIC        EA
+  D:00E8H         PUBLIC        I2CCON
+  D:00E8H         PUBLIC        DCON
+  C:0A1EH         PUBLIC        main
+  D:0089H         PUBLIC        TMOD
+  B:00A8H.3       PUBLIC        ET1
+  B:0088H.7       PUBLIC        TF1
+  D:008DH         PUBLIC        TH1
+  D:008BH         PUBLIC        TL1
+  B:0088H.6       PUBLIC        TR1
+  D:0008H         PUBLIC        g
+  D:0009H         PUBLIC        time_ms
+  -------         PROC          TIMER_1_FUNCTION
+  C:0AA9H         LINE#         21
+  C:0AC6H         LINE#         26
+  C:0AC9H         LINE#         27
+  C:0AD9H         LINE#         28
+  C:0B15H         LINE#         29
+  -------         ENDPROC       TIMER_1_FUNCTION
+  -------         PROC          MAIN
+  C:0A1EH         LINE#         34
+  C:0A1EH         LINE#         35
+  C:0A1EH         LINE#         39
+  C:0A20H         LINE#         44
+  C:0A22H         LINE#         54
+  C:0A25H         LINE#         59
+  C:0A61H         LINE#         66
+  C:0A63H         LINE#         67
+  C:0A66H         LINE#         73
+  C:0A66H         LINE#         74
+  C:0A66H         LINE#         83
+  C:0A69H         LINE#         84
+  C:0A69H         LINE#         86
+  C:0A6BH         LINE#         87
+  C:0AA7H         LINE#         89
+  C:0AA7H         LINE#         90
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        TIMERS
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  -------         ENDMOD        TIMERS
+
+  -------         MODULE        ?C?FPDIV
+  C:0803H         PUBLIC        ?C?FPDIV
+  -------         ENDMOD        ?C?FPDIV
+
+  -------         MODULE        ?C?FCAST
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/02/2018  17:44:12  PAGE 3
+
+
+  C:08AAH         PUBLIC        ?C?FCASTC
+  C:08A5H         PUBLIC        ?C?FCASTI
+  C:08A0H         PUBLIC        ?C?FCASTL
+  -------         ENDMOD        ?C?FCAST
+
+  -------         MODULE        ?C?CASTF
+  C:08DEH         PUBLIC        ?C?CASTF
+  -------         ENDMOD        ?C?CASTF
+
+  -------         MODULE        ?C?IMUL
+  C:095FH         PUBLIC        ?C?IMUL
+  -------         ENDMOD        ?C?IMUL
+
+  -------         MODULE        ?C?LNEG
+  C:0971H         PUBLIC        ?C?LNEG
+  -------         ENDMOD        ?C?LNEG
+
+  -------         MODULE        ?C?ULSHR
+  C:097FH         PUBLIC        ?C?ULSHR
+  -------         ENDMOD        ?C?ULSHR
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 011CH BYTE (13%) *
+******************************************************************************
+
+Program Size: data=12.0 xdata=0 code=830
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

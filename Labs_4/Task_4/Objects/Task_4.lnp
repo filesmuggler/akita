@@ -1,0 +1,4 @@
+".\Objects\main.obj",
+".\Objects\timers.obj" 
+TO ".\Objects\Task_4" 
+PRINT(".\Listings\Task_4.m51") RAMSIZE(256) 

@@ -7,7 +7,14 @@
  
  #include "aduc831.h"
  #include "timers.h"
+ #include "bitop.h"
  
+ /*
+	* Global variables
+	*/
+char my_buffer[3];
+int counter = 0;
+int led_number = 0;
  
 /*
  * Example for 11.0592 MHz and 115200 bits/second
@@ -17,9 +24,39 @@ void UART_function() interrupt 4
 {
 	char received = 0;
 	if(RI == 1){
+		// getting char from user
+		received = (char)SBUF;
+		// putting the char into array
+		my_buffer[counter]=received;
+		// incrementing the counter
+		counter++;
+		// if counter == 3 check contents
+		if(counter==3)
+		{
+			if(my_buffer[0]=='L')
+			{
+				if(my_buffer[1]=='1' || my_buffer[1]=='2' || my_buffer[1]=='3')
+				{
+					led_number = my_buffer[1] - '0';
+				}
+				if(my_buffer[2]=='S')
+				{
+					DiodeON(P3, led_number);
+					counter = 0;
+				}
+				else if(my_buffer[2]=='R')
+				{
+					DiodeOFF(P3, led_number);
+					counter = 0;
+				}
+			}
+		}
+		// 			if contents are a command do them
+		// 					clear the array, reset counter
+		// else keep going
 	  received = (char)SBUF;
 		RI = 0;
-		SBUF = received + 1;
+		SBUF = received;
 	}
 	if(TI==1){
 		TI = 0;

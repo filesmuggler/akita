@@ -1,0 +1,205 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    12/11/2018  18:36:37  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+D:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\main.obj TO .\Objects\Task_4 PRINT (.\Listings\Task_4.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL WITH FLOATING POINT ARITHMETIC
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  D:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPADD)
+  D:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPMUL)
+  D:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPDIV)
+  D:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPCMP)
+  D:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?CASTF)
+  D:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPGETOPN)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C?LNEG)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\Task_4 (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0022H     UNIT         ?DT?MAIN
+            DATA    002AH     001CH     UNIT         _DATA_GROUP_
+            IDATA   0046H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0018H                  *** GAP ***
+            CODE    001BH     0003H     ABSOLUTE     
+                    001EH     07E2H                  *** GAP ***
+            CODE    0800H     03A6H     UNIT         ?C?LIB_CODE
+            CODE    0BA6H     014FH     UNIT         ?PR?TIMER_1_INTERRUPT?MAIN
+            CODE    0CF5H     00FAH     UNIT         ?PR?_VOLTAGE_CALC?MAIN
+            CODE    0DEFH     008CH     UNIT         ?C_C51STARTUP
+            CODE    0E7BH     0051H     UNIT         ?PR?MAIN?MAIN
+            CODE    0ECCH     000BH     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\Task_4 (MAIN)
+
+
+SEGMENT                              DATA_GROUP 
+  +--> CALLED SEGMENT              START    LENGTH
+--------------------------------------------------
+?PR?TIMER_1_INTERRUPT?MAIN         -----    -----
+  +--> ?PR?_VOLTAGE_CALC?MAIN
+
+?PR?_VOLTAGE_CALC?MAIN             002AH    001CH
+
+*** NEW ROOT ***************************************************
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/11/2018  18:36:37  PAGE 2
+
+
+
+?C_C51STARTUP                      -----    -----
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Task_4 (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0008H         PUBLIC        sample
+  B:00A8H.7       PUBLIC        EA
+  C:0BA6H         PUBLIC        timer_1_interrupt
+  D:000AH         PUBLIC        wave_params
+  D:00E8H         PUBLIC        I2CCON
+  D:00E8H         PUBLIC        DCON
+  C:0E7BH         PUBLIC        main
+  D:00FDH         PUBLIC        DACCON
+  D:0089H         PUBLIC        TMOD
+  D:00FAH         PUBLIC        DAC0H
+  D:00F9H         PUBLIC        DAC0L
+  B:00A8H.3       PUBLIC        ET1
+  D:008DH         PUBLIC        TH1
+  D:008BH         PUBLIC        TL1
+  B:0088H.6       PUBLIC        TR1
+  D:0026H         PUBLIC        sample_voltage
+  C:0CF5H         PUBLIC        _voltage_calc
+  -------         PROC          _VOLTAGE_CALC
+  D:002AH         SYMBOL        t
+  D:002EH         SYMBOL        period
+  D:0032H         SYMBOL        rise
+  D:0036H         SYMBOL        timeon
+  D:003AH         SYMBOL        wave_amplitude
+  D:003EH         SYMBOL        offset
+  -------         DO            
+  D:0042H         SYMBOL        voltage
+  -------         ENDDO         
+  C:0CF5H         LINE#         23
+  C:0CFDH         LINE#         24
+  C:0CFDH         LINE#         27
+  C:0D12H         LINE#         28
+  C:0D12H         LINE#         29
+  C:0D30H         LINE#         30
+  C:0D33H         LINE#         31
+  C:0D56H         LINE#         32
+  C:0D56H         LINE#         33
+  C:0DE6H         LINE#         34
+  C:0DE6H         LINE#         36
+  C:0DEEH         LINE#         37
+  -------         ENDPROC       _VOLTAGE_CALC
+  -------         PROC          TIMER_1_INTERRUPT
+  C:0BA6H         LINE#         39
+  C:0BC3H         LINE#         41
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/11/2018  18:36:37  PAGE 3
+
+
+  C:0BC9H         LINE#         43
+  C:0BE4H         LINE#         44
+  C:0BF9H         LINE#         45
+  C:0BF9H         LINE#         46
+  C:0C05H         LINE#         47
+  C:0C05H         LINE#         49
+  C:0C54H         LINE#         53
+  C:0C6AH         LINE#         54
+  C:0C6AH         LINE#         55
+  C:0C76H         LINE#         56
+  C:0C78H         LINE#         58
+  C:0C78H         LINE#         59
+  C:0C84H         LINE#         60
+  C:0C84H         LINE#         61
+  C:0C96H         LINE#         62
+  C:0C96H         LINE#         63
+  C:0CA2H         LINE#         64
+  C:0CA4H         LINE#         66
+  C:0CA4H         LINE#         67
+  C:0CB0H         LINE#         68
+  C:0CB0H         LINE#         71
+  C:0CD4H         LINE#         73
+  C:0CD7H         LINE#         74
+  C:0CDAH         LINE#         75
+  -------         ENDPROC       TIMER_1_INTERRUPT
+  -------         PROC          MAIN
+  C:0E7BH         LINE#         77
+  C:0E7BH         LINE#         78
+  C:0E7BH         LINE#         80
+  C:0E7EH         LINE#         82
+  C:0E80H         LINE#         83
+  C:0E82H         LINE#         86
+  C:0E85H         LINE#         89
+  C:0E90H         LINE#         90
+  C:0E9AH         LINE#         91
+  C:0EA4H         LINE#         92
+  C:0EACH         LINE#         93
+  C:0EB4H         LINE#         94
+  C:0EBCH         LINE#         95
+  C:0EC8H         LINE#         98
+  C:0ECAH         LINE#         99
+  C:0ECAH         LINE#         100
+  C:0ECAH         LINE#         101
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        ?C?FPADD
+  C:0807H         PUBLIC        ?C?FPADD
+  C:0803H         PUBLIC        ?C?FPSUB
+  -------         ENDMOD        ?C?FPADD
+
+  -------         MODULE        ?C?FPMUL
+  C:08F8H         PUBLIC        ?C?FPMUL
+  -------         ENDMOD        ?C?FPMUL
+
+  -------         MODULE        ?C?FPDIV
+  C:0A01H         PUBLIC        ?C?FPDIV
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/11/2018  18:36:37  PAGE 4
+
+
+  -------         ENDMOD        ?C?FPDIV
+
+  -------         MODULE        ?C?FPCMP
+  C:0AA0H         PUBLIC        ?C?FPCMP
+  C:0A9EH         PUBLIC        ?C?FPCMP3
+  -------         ENDMOD        ?C?FPCMP
+
+  -------         MODULE        ?C?CASTF
+  C:0B17H         PUBLIC        ?C?CASTF
+  -------         ENDMOD        ?C?CASTF
+
+  -------         MODULE        ?C?LNEG
+  C:0B98H         PUBLIC        ?C?LNEG
+  -------         ENDMOD        ?C?LNEG
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 02A7H BYTE (33%) *
+******************************************************************************
+
+Program Size: data=71.0 xdata=0 code=1757
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

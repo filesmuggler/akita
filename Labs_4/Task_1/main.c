@@ -34,7 +34,7 @@ void main()
 	
 	TMOD = T1_MODE_8B_AUTORELOAD;
 	
-	TH1 = T1_19200_12;
+	TH1 = T1_19200_11;
 	
 	TR1 = 1;
 	

@@ -1,0 +1,61 @@
+C51 COMPILER V9.59.0.0   MAIN                                                              12/09/2018 19:23:51 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          /**
+   2           * @author Krzysztof Stezala
+   3           * @date 2018-12-09
+   4           * @version 1.0
+   5           * @brief DAC operation analysis
+   6           */
+   7           
+   8           #include "aduc831.h"
+   9           #include "timers.h"
+  10           #include "bitop.h"
+  11           #include "definitions.h"
+  12            
+  13           /*
+  14            * Global variables
+  15            */
+  16          sample_t sample0={0};
+  17          sample_t sample1={0};
+  18          float sample_voltage=DA_Vref;
+  19          
+  20          void main(void)
+  21          {
+  22   1        DACCON = (DAC_MODE_12|DAC_RNG1_ON|DAC_RNG0_ON|DAC_CLR1_ON|DAC_CLR0_ON|DAC_SYNC_ON|DAC_POWER1_ON|DAC_POWER
+             -0_ON);
+  23   1        sample0.value=(unsigned int)(sample_voltage/DA_Vref*(float)DA_MAX_VALUE);
+  24   1        sample1.value=(unsigned int)(sample_voltage/DA_Vref/2.0*(float)DA_MAX_VALUE);
+  25   1        
+  26   1        DAC0H=sample0.word.high_byte;
+  27   1        DAC0L=sample0.word.low_byte;
+  28   1        
+  29   1        DAC1H=sample1.word.high_byte;
+  30   1        DAC1L=sample1.word.low_byte;
+  31   1        
+  32   1        while(1)
+  33   1        {
+  34   2        }
+  35   1      }
+  36            
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     98    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      8    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

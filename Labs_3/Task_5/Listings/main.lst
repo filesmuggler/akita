@@ -1,0 +1,85 @@
+C51 COMPILER V9.59.0.0   MAIN                                                              12/12/2018 21:35:24 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          /**
+   2           * @author Krzysztof Stezala
+   3           * @date 2018-12-12
+   4           * @version 1.0
+   5           * @brief Counting pulses
+   6           */
+   7           
+   8           #include "aduc831.h"
+   9           #include "timers.h"
+  10           #include "bitop.h"
+  11           #include "definitions.h"
+  12           
+  13          /*
+  14          * Global variables
+  15          */
+  16          int z=0;
+  17          int number_of_pulses=0;
+  18          int obs_time=2;
+  19          int sampling_time = 75;
+  20          uint16_t result;
+  21          
+  22          void timer1_interrupt() interrupt 3
+  23          {
+  24   1        if(z<result)
+  25   1        {
+  26   2          z++;
+  27   2        }
+  28   1        else
+  29   1        {
+  30   2          TR0=0;
+  31   2          TR1=0;
+  32   2          number_of_pulses=(int)(TL0+TH0);
+  33   2          TL0=0x00;
+  34   2          TH0=0x00;
+  35   2          z=0;
+  36   2          T1_set_time(sampling_time);
+  37   2          TR1=1;
+  38   2          TR0=1;
+  39   2        }
+  40   1      }
+  41          
+  42          void main(void)
+  43          { 
+  44   1          ET1=1;
+  45   1          ET0=1;
+  46   1          EA=1;  
+  47   1          result =(int)(obs_time*1000/sampling_time);
+  48   1          T1_set_time(sampling_time);
+  49   1          TMOD=T1_MODE_GATE_ON|T1_MODE_OPERATIONAL_TIMER|T1_MODE_16B|T0_MODE_GATE_OFF|T0_MODE_OPERATIONAL_COUNTER|
+             -T0_MODE_16B;
+  50   1          TH1=0;
+  51   1          TL1=0;
+  52   1          TR1=1; //Start timer 1
+  53   1          TR0=1;
+C51 COMPILER V9.59.0.0   MAIN                                                              12/12/2018 21:35:24 PAGE 2   
+
+  54   1        while(1)
+  55   1        {
+  56   2      
+  57   2        }
+  58   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    271    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     10    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

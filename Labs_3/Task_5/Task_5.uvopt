@@ -142,6 +142,11 @@
           <WinNumber>1</WinNumber>
           <ItemText>number_of_pulses</ItemText>
         </Ww>
+        <Ww>
+          <count>1</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>z</ItemText>
+        </Ww>
       </WatchWindow1>
       <Tracepoint>
         <THDelay>0</THDelay>

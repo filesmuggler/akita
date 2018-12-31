@@ -1,4 +1,4 @@
-C51 COMPILER V9.59.0.0   MAIN                                                              12/11/2018 18:36:37 PAGE 1   
+C51 COMPILER V9.59.0.0   MAIN                                                              12/13/2018 07:17:06 PAGE 1   
 
 
 C51 COMPILER V9.59.0.0, COMPILATION OF MODULE MAIN
@@ -62,7 +62,7 @@ line level    source
   50   1        
   51   1        //Signal restrictions//sample_voltage=(sample_voltage>DA_Vref)? DA_Vref: sample_voltage; //The expression
              - a ? b : c returns b if a is true, otherwise it returns c.//sample_voltage=(sample_voltage<0)? 0 : sample_voltage;
-C51 COMPILER V9.59.0.0   MAIN                                                              12/11/2018 18:36:37 PAGE 2   
+C51 COMPILER V9.59.0.0   MAIN                                                              12/13/2018 07:17:06 PAGE 2   
 
   52   1        //Keep the signal in bounds
   53   1        if(sample_voltage>DA_Vref)
@@ -126,7 +126,7 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =     34      28
-C51 COMPILER V9.59.0.0   MAIN                                                              12/11/2018 18:36:37 PAGE 3   
+C51 COMPILER V9.59.0.0   MAIN                                                              12/13/2018 07:17:06 PAGE 3   
 
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----

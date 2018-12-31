@@ -86,9 +86,9 @@ void main(void)
 	TMOD = (T1_MODE_GATE_ON|T1_MODE_OPERATIONAL_TIMER|T1_MODE_16B); //16b timer
 	
 	//saw-tooth parameters
-	wave_params.period = 2.5;
+	wave_params.period = 5;
 	wave_params.amplitude = 5;					// wave_amplitude
-	wave_params.rise_edge = 2.5;				// czas narastania
+	wave_params.rise_edge = 5;				// czas narastania
 	wave_params.time_on = 0.0;					
 	wave_params.offset = 0.0;
 	wave_params.t = 0.0;

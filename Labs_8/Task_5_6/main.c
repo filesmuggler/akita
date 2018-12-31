@@ -50,7 +50,7 @@ void timer1_handler() interrupt 3
 	//Determine sample
 	sample_voltage=voltage_calc(wave_params.t,wave_params.period,wave_params.rise_edge,wave_params.time_on,wave_params.amplitude,wave_params.offset,wave_params.rectangle);
 	//Signal restrictions
-	sample_voltage=(sample_voltage>DA_Vref)? DA_Vref: sample_voltage; //The expression a ? b : c returns b if a is true, otherwise it returns c.
+	sample_voltage=(sample_voltage>DA_Vref)? DA_Vref: sample_voltage;
 	sample_voltage=(sample_voltage<0)? 0 : sample_voltage;
 	//Register conversion
 	sample.value=(unsigned int)(sample_voltage/DA_Vref*(float)DA_MAX_VALUE);
@@ -72,10 +72,10 @@ void main(){
 	//saw-tooth params
 	wave_params.period = 6.0;
 	wave_params.amplitude = 3.5;
-	wave_params.rise_edge = 2.5;
+	wave_params.rise_edge = 2.0;
 	wave_params.time_on = 4.0;
 	wave_params.offset = 2.0;
-	wave_params.rectangle = 1;
+	wave_params.rectangle = 0;
 	wave_params.t = 0.0;
 	wave_params.delta_t = (((float32_t)GENERATOR_SAMPLING_TIME)/1000.0);
 

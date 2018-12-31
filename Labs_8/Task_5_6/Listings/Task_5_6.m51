@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    12/11/2018  19:31:18  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    12/13/2018  07:19:23  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
@@ -44,8 +44,8 @@ LINK MAP OF MODULE:  .\Objects\Task_5_6 (MAIN)
             CODE    0BA6H     0157H     UNIT         ?PR?_VOLTAGE_CALC?MAIN
             CODE    0CFDH     0146H     UNIT         ?PR?TIMER1_HANDLER?MAIN
             CODE    0E43H     008CH     UNIT         ?C_C51STARTUP
-            CODE    0ECFH     0057H     UNIT         ?PR?MAIN?MAIN
-            CODE    0F26H     000BH     UNIT         ?C_INITSEG
+            CODE    0ECFH     0055H     UNIT         ?PR?MAIN?MAIN
+            CODE    0F24H     000BH     UNIT         ?C_INITSEG
 
 
 
@@ -59,7 +59,7 @@ SEGMENT                           DATA_GROUP
   +--> ?PR?_VOLTAGE_CALC?MAIN
 
 ?PR?_VOLTAGE_CALC?MAIN          002BH    001DH
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/11/2018  19:31:18  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/13/2018  07:19:23  PAGE 2
 
 
 
@@ -119,7 +119,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\Task_5_6 (MAIN)
   C:0C2CH         LINE#         34
   C:0C4FH         LINE#         35
   C:0C4FH         LINE#         36
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/11/2018  19:31:18  PAGE 3
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/13/2018  07:19:23  PAGE 3
 
 
   C:0C64H         LINE#         37
@@ -149,15 +149,15 @@ SYMBOL TABLE OF MODULE:  .\Objects\Task_5_6 (MAIN)
   C:0ED9H         LINE#         73
   C:0EE4H         LINE#         74
   C:0EEEH         LINE#         75
-  C:0EF8H         LINE#         76
-  C:0F02H         LINE#         77
-  C:0F0BH         LINE#         78
-  C:0F0EH         LINE#         79
-  C:0F16H         LINE#         80
-  C:0F22H         LINE#         82
-  C:0F24H         LINE#         83
-  C:0F24H         LINE#         84
-  C:0F24H         LINE#         85
+  C:0EF7H         LINE#         76
+  C:0F01H         LINE#         77
+  C:0F0AH         LINE#         78
+  C:0F0CH         LINE#         79
+  C:0F14H         LINE#         80
+  C:0F20H         LINE#         82
+  C:0F22H         LINE#         83
+  C:0F22H         LINE#         84
+  C:0F22H         LINE#         85
   -------         ENDPROC       MAIN
   -------         ENDMOD        MAIN
 
@@ -179,7 +179,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\Task_5_6 (MAIN)
   -------         ENDMOD        ?C?FPDIV
 
   -------         MODULE        ?C?FPCMP
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/11/2018  19:31:18  PAGE 4
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/13/2018  07:19:23  PAGE 4
 
 
   C:0AA0H         PUBLIC        ?C?FPCMP
@@ -195,8 +195,8 @@ SYMBOL TABLE OF MODULE:  .\Objects\Task_5_6 (MAIN)
   -------         ENDMOD        ?C?LNEG
 
 ******************************************************************************
-* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0301H BYTE (37%) *
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 02FFH BYTE (37%) *
 ******************************************************************************
 
-Program Size: data=73.0 xdata=0 code=1847
+Program Size: data=73.0 xdata=0 code=1845
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

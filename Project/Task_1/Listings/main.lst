@@ -1,0 +1,209 @@
+C51 COMPILER V9.59.0.0   MAIN                                                              01/13/2019 02:08:42 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          /**
+   2           * @author Krzysztof Stezala
+   3           * @date 2019-01-12
+   4           * @version 1.0
+   5           * @brief UART communication with third-party app
+   6           */
+   7           
+   8           
+   9           /**
+  10            * UART set into Mode 1 (8-bit, Variable Baud Rate)
+  11            *
+  12            *
+  13            */
+  14          #include "aduc831.h"
+  15          #include "timers.h"
+  16          #include "definitions.h"
+  17          
+  18          char message_index;
+  19          
+  20          int frequency_1;
+  21          char frequency_1_t[8];
+  22          int duty_cycle_1;                                       // after processing
+  23          char duty_cycle_1_t[2];                                 // before processing
+  24          
+  25          
+  26          int frequency_2;
+  27          char frequency_2_t[8];
+  28          int duty_cycle_2;
+  29          char duty_cycle_2_t[2];
+  30          
+  31          int operation_mode;
+  32          
+  33          bool new_data = FALSE;
+  34          bool mode_data = FALSE;
+  35          bool duty_cycle_data = FALSE;
+  36          bool freq_data = FALSE;
+  37          bool two_channel = FALSE;
+  38          
+  39          void receiveMessage() interrupt 4
+  40          {
+  41   1        /**
+  42   1        * Receiving transmission
+  43   1        */
+  44   1        char received = 0;
+  45   1        if(RI==1){
+  46   2          received = (char)SBUF;
+  47   2          RI = 0;
+  48   2          SBUF = received;
+  49   2        }
+  50   1        if(TI==1){
+  51   2          TI = 0;
+  52   2        }
+  53   1        
+  54   1        /**
+C51 COMPILER V9.59.0.0   MAIN                                                              01/13/2019 02:08:42 PAGE 2   
+
+  55   1        * Checking for flags from incoming transmission
+  56   1        */
+  57   1        if(received=='S')
+  58   1        {
+  59   2          new_data = TRUE;
+  60   2          
+  61   2          mode_data = TRUE;
+  62   2          freq_data = FALSE;
+  63   2          duty_cycle_data = FALSE;
+  64   2          
+  65   2          message_index = message_index + 1;
+  66   2          return;
+  67   2        }
+  68   1        else if(received == 'D')
+  69   1        {
+  70   2          mode_data = FALSE;
+  71   2          duty_cycle_data = TRUE;
+  72   2          freq_data = FALSE;    
+  73   2          
+  74   2          message_index = message_index + 1;
+  75   2          return;
+  76   2        }
+  77   1        else if(received == 'F')
+  78   1        {
+  79   2          mode_data = FALSE;
+  80   2          duty_cycle_data = FALSE;
+  81   2          freq_data = TRUE;
+  82   2          
+  83   2          message_index = message_index + 1;
+  84   2          return;
+  85   2        }
+  86   1        else if(received == 'E')
+  87   1        {
+  88   2          new_data = FALSE;
+  89   2          
+  90   2          mode_data = FALSE;
+  91   2          freq_data = FALSE;
+  92   2          duty_cycle_data = FALSE;
+  93   2          two_channel = FALSE;
+  94   2          
+  95   2          message_index = 0;
+  96   2          return;
+  97   2        }
+  98   1        
+  99   1        /**
+ 100   1        * Incoming data analysis
+ 101   1        */
+ 102   1        if(new_data)
+ 103   1        {
+ 104   2          if(mode_data)
+ 105   2          {
+ 106   3            operation_mode = received;
+ 107   3            if(operation_mode!=49){
+ 108   4              two_channel = TRUE;
+ 109   4            }
+ 110   3          }
+ 111   2          
+ 112   2          if(duty_cycle_data)
+ 113   2          {
+ 114   3            if(!two_channel)
+ 115   3            {
+ 116   4              // for single channel
+C51 COMPILER V9.59.0.0   MAIN                                                              01/13/2019 02:08:42 PAGE 3   
+
+ 117   4              duty_cycle_1_t[message_index - 3] = received;
+ 118   4            }
+ 119   3            else
+ 120   3            {
+ 121   4              // for double channel
+ 122   4              if(message_index < 5)
+ 123   4              {
+ 124   5                duty_cycle_1_t[message_index - 3] = received;
+ 125   5              }
+ 126   4              else
+ 127   4              {
+ 128   5                duty_cycle_2_t[message_index - 5] = received;
+ 129   5              }
+ 130   4            }
+ 131   3          }
+ 132   2          
+ 133   2          if(freq_data)
+ 134   2          {
+ 135   3            if(!two_channel)
+ 136   3            {
+ 137   4              // for single channel
+ 138   4              frequency_1_t[message_index - 6] = received;
+ 139   4            }
+ 140   3            else
+ 141   3            {
+ 142   4              // for double channel
+ 143   4              if(message_index < 16)
+ 144   4              {
+ 145   5                frequency_1_t[message_index - 8] = received;
+ 146   5              }
+ 147   4              else
+ 148   4              {
+ 149   5                frequency_2_t[message_index - 16] = received;
+ 150   5              }
+ 151   4            }
+ 152   3          }
+ 153   2          message_index = message_index + 1;
+ 154   2        }
+ 155   1        return;
+ 156   1      }
+ 157          
+ 158          
+ 159          
+ 160          void main()
+ 161          {
+ 162   1        ES = 1;
+ 163   1        EA = 1;
+ 164   1        
+ 165   1        SM0 = 0;
+ 166   1        SM1 = 1;
+ 167   1        SM2 = 0;
+ 168   1        REN = 1;
+ 169   1        
+ 170   1        TMOD = T1_MODE_8B_AUTORELOAD;
+ 171   1        
+ 172   1        TH1 = T1_9600_11;
+ 173   1        
+ 174   1        TR1 = 1;
+ 175   1        
+ 176   1        while(1)
+ 177   1        {
+ 178   2        }
+C51 COMPILER V9.59.0.0   MAIN                                                              01/13/2019 02:08:42 PAGE 4   
+
+ 179   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    255    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     36    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

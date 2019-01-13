@@ -1,0 +1,53 @@
+C51 COMPILER V9.59.0.0   MAIN                                                              01/10/2019 07:36:43 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include "aduc831.h"
+   2          #include "pwm_macro.h"
+   3          
+   4          
+   5          float period;
+   6          int duty;
+   7          
+   8          void main(void)
+   9          {
+  10   1        CFG831 = 0x0000;
+  11   1        //Mode 1
+  12   1        PWMCON=PWM_MODE1;               //1 PWM with maximum period - maxPeriod16
+  13   1        period=2.0;                     //period of PWM (ms)
+  14   1        duty=50;                        //duty cycle of PWM (%)
+  15   1        
+  16   1        if(period>maxPeriod16)
+  17   1          period=maxPeriod16;
+  18   1        if(duty>maxDuty)
+  19   1          duty=maxDuty;
+  20   1        
+  21   1        PWM_M1_PERIOD(period);
+  22   1        PWM_M1_DUTY(per2time(duty));
+  23   1        
+  24   1        while(1){
+  25   2        }
+  26   1        
+  27   1        
+  28   1        
+  29   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    172    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      6    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,158 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    01/13/2019  02:17:08  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+D:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\main.obj, .\Objects\timers.obj, .\Objects\definitions.obj TO .\Objects\Task_1 PRIN
+>> T (.\Listings\Task_1.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  .\Objects\timers.obj (TIMERS)
+  .\Objects\definitions.obj (DEFINITIONS)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\Task_1 (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     003DH     UNIT         ?DT?MAIN
+            IDATA   0045H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0020H                  *** GAP ***
+            CODE    0023H     0003H     ABSOLUTE     
+                    0026H     07DAH                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     004BH     UNIT         ?PR?RECEIVEMESSAGE?MAIN
+            CODE    08D7H     0019H     UNIT         ?PR?MAIN?MAIN
+            CODE    08F0H     0010H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\Task_1 (MAIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Task_1 (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  01/13/2019  02:17:08  PAGE 2
+
+
+  B:00A8H.7       PUBLIC        EA
+  B:00A8H.4       PUBLIC        ES
+  D:0008H         PUBLIC        two_channel
+  B:0098H.0       PUBLIC        RI
+  B:0098H.1       PUBLIC        TI
+  D:00E8H         PUBLIC        I2CCON
+  D:0009H         PUBLIC        duty_cycle_1_t
+  D:000BH         PUBLIC        duty_cycle_2_t
+  D:000DH         PUBLIC        mode_data
+  D:00E8H         PUBLIC        DCON
+  C:08D7H         PUBLIC        main
+  D:000EH         PUBLIC        freq_data
+  D:0099H         PUBLIC        SBUF
+  C:088CH         PUBLIC        receiveMessage
+  D:0089H         PUBLIC        TMOD
+  D:000FH         PUBLIC        duty_cycle_data
+  D:0010H         PUBLIC        frequency_1_t
+  D:0018H         PUBLIC        frequency_2_t
+  D:0020H         PUBLIC        new_data
+  D:0021H         PUBLIC        duty_cycle_1
+  D:008DH         PUBLIC        TH1
+  D:0023H         PUBLIC        duty_cycle_2
+  B:0098H.7       PUBLIC        SM0
+  B:0098H.6       PUBLIC        SM1
+  B:0098H.5       PUBLIC        SM2
+  B:0088H.6       PUBLIC        TR1
+  D:0025H         PUBLIC        operation_mode
+  D:0027H         PUBLIC        message_index
+  B:0098H.4       PUBLIC        REN
+  D:0028H         PUBLIC        frequency_1
+  D:002AH         PUBLIC        frequency_2
+  D:002CH         PUBLIC        buffer
+  -------         PROC          RECEIVEMESSAGE
+  -------         DO            
+  D:0007H         SYMBOL        received
+  -------         ENDDO         
+  C:088CH         LINE#         42
+  C:0899H         LINE#         47
+  C:089BH         LINE#         48
+  C:089EH         LINE#         49
+  C:08A0H         LINE#         50
+  C:08A2H         LINE#         51
+  C:08A4H         LINE#         52
+  C:08ABH         LINE#         53
+  C:08ADH         LINE#         54
+  C:08ADH         LINE#         55
+  C:08B0H         LINE#         56
+  C:08B2H         LINE#         57
+  C:08B2H         LINE#         58
+  C:08B5H         LINE#         59
+  C:08B5H         LINE#         60
+  C:08B7H         LINE#         62
+  C:08B7H         LINE#         63
+  C:08C9H         LINE#         64
+  C:08C9H         LINE#         65
+  C:08CCH         LINE#         66
+  C:08CCH         LINE#         68
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  01/13/2019  02:17:08  PAGE 3
+
+
+  -------         ENDPROC       RECEIVEMESSAGE
+  -------         PROC          MAIN
+  C:08D7H         LINE#         72
+  C:08D7H         LINE#         73
+  C:08D7H         LINE#         74
+  C:08D9H         LINE#         75
+  C:08DBH         LINE#         77
+  C:08DDH         LINE#         78
+  C:08DFH         LINE#         79
+  C:08E1H         LINE#         80
+  C:08E3H         LINE#         82
+  C:08E6H         LINE#         84
+  C:08E9H         LINE#         86
+  C:08EBH         LINE#         88
+  C:08EEH         LINE#         90
+  C:08EEH         LINE#         91
+  C:08EEH         LINE#         92
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        TIMERS
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  -------         ENDMOD        TIMERS
+
+  -------         MODULE        DEFINITIONS
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  -------         ENDMOD        DEFINITIONS
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0076H BYTE ( 5%) *
+******************************************************************************
+
+Program Size: data=70.0 xdata=0 code=262
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
